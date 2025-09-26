@@ -9,55 +9,21 @@ let photoSession = {
 document.getElementById('container3').style.display = 'none';
 document.getElementById('container2').style.display = 'none';
 document.getElementById('custom').style.display = 'none';  
-document.getElementById('container1').style.display = 'flex';  
+document.getElementById('container').style.display = 'flex';  
 
 
 function enterStudio() {
     document.getElementById('container1').style.display = 'none';
     document.getElementById('container2').style.display = 'flex';
-    
-    const constraints = {
-        video: {
-            facingMode: 'user',
-            width: { ideal: 1280 },
-            height: { ideal: 720 }
-        }
-    };
-    
-    const getUserMedia = navigator.mediaDevices?.getUserMedia || 
-                        navigator.webkitGetUserMedia || 
-                        navigator.mozGetUserMedia || 
-                        navigator.msGetUserMedia;
-    
-    if (!getUserMedia) {
-        alert("Camera not supported in this browser. Please use a modern browser like Safari 11+ or Chrome.");
-        return;
-    }
-    
-    navigator.mediaDevices.getUserMedia(constraints)
+    navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
         const video = document.getElementById('camera');
-        if ('srcObject' in video) {
-            video.srcObject = stream;
-        } else {
-            video.src = window.URL.createObjectURL(stream);
-        }
-        
-        video.setAttribute('playsinline', true);
-        video.setAttribute('muted', true);
-        
+        video.srcObject = stream;
         photoSession.stream = stream;
         setupDragAndDrop();
     })
     .catch(err => {
-        console.error("Camera access error:", err);
-        if (err.name === 'NotAllowedError') {
-            alert("Camera access denied. Please allow camera access in your browser settings and try again.");
-        } else if (err.name === 'NotFoundError') {
-            alert("No camera found. Please connect a camera and try again.");
-        } else {
-            alert("Error accessing camera: " + err.message + ". Please check your browser settings.");
-        }
+        alert("Error accessing camera: " + err.message);
     });
 }
 
@@ -167,7 +133,6 @@ function setupDragAndDrop() {
         
         coinInContainer.addEventListener('touchstart', (e) => {
             e.preventDefault();
-            e.stopPropagation();
             isTouchDragging = true;
             
             const touch = e.touches[0];
@@ -184,16 +149,12 @@ function setupDragAndDrop() {
             coinInContainer.style.position = 'fixed';
             coinInContainer.style.pointerEvents = 'none';
             
-            document.body.style.webkitUserSelect = 'none';
-            document.body.style.userSelect = 'none';
-            
             console.log('Touch drag started');
-        }, { passive: false });
+        });
         
         document.addEventListener('touchmove', (e) => {
             if (isTouchDragging) {
                 e.preventDefault();
-                e.stopPropagation();
                 
                 const touch = e.touches[0];
                 const deltaX = touch.clientX - touchStartX;
@@ -212,16 +173,12 @@ function setupDragAndDrop() {
                     slot.style.border = '';
                 }
             }
-        }, { passive: false });
+        });
         
         document.addEventListener('touchend', (e) => {
             if (isTouchDragging) {
                 e.preventDefault();
-                e.stopPropagation();
                 isTouchDragging = false;
-                
-                document.body.style.webkitUserSelect = '';
-                document.body.style.userSelect = '';
                 
                 coinInContainer.style.cursor = 'grab';
                 coinInContainer.style.opacity = '1';
@@ -242,7 +199,7 @@ function setupDragAndDrop() {
                 slot.style.backgroundColor = '';
                 slot.style.border = '';
             }
-        }, { passive: false });
+        });
         
     }, 100);
 }
@@ -582,46 +539,12 @@ function download() {
             scrollX: 0,
             scrollY: 0,
             imageTimeout: 15000,
-            removeContainer: false,
-            logging: false,
-            foreignObjectRendering: true
+            removeContainer: false
         }).then(canvas => { 
             const link = document.createElement('a');
-            const timestamp = new Date().toISOString().slice(0, 10);
-            link.download = `photostrip-${timestamp}-${Date.now()}.png`;
-            
-            const dataURL = canvas.toDataURL('image/png', 1.0);
-            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent) ||
-                            /iPad|iPhone|iPod/.test(navigator.userAgent);
-            
-            if (isSafari) {
-                const newWindow = window.open();
-                if (newWindow) {
-                    newWindow.document.write(`
-                        <html>
-                            <head><title>PhotoBooth Strip</title></head>
-                            <body style="margin:0; background:#000; display:flex; align-items:center; justify-content:center;">
-                                <img src="${dataURL}" style="max-width:100%; max-height:100%;" />
-                                <p style="position:fixed; bottom:20px; color:white; font-family:Arial;">
-                                    Right-click the image and select "Save Image" to download.
-                                </p>
-                            </body>
-                        </html>
-                    `);
-                    newWindow.document.close();
-                } else {
-                    link.href = dataURL;
-                    link.target = '_blank';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                }
-            } else {
-                link.href = dataURL;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
+            link.download = `photostrip-${new Date().toISOString().slice(0, 10)}-${Date.now()}.png`;
+            link.href = canvas.toDataURL('image/png', 1.0);
+            link.click();
         }).catch(error => {
             console.error('Download failed:', error);
             alert('Download failed. Please try again.');
