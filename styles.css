@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@font-face {
+    font-family: 'Indiana';
+    src: url('cyparius.ttf');
+}
+@font-face {
+    font-family: 'geoman';
+    src: url('Geo.ttf');
+}
+html body{
+    font-family: 'Indiana', 'geoman', sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.container{
+    background-image: url('scene1.svg');
+    background-size: cover;
+    height: 40em;
+    width: 65em;
+    padding-inline: 4rem;
+    box-sizing: border-box;
+    display: flex;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    position: relative;
+    overflow-x: auto;
+    overflow-y: auto;
+    padding-block: 1.5rem;
+    font-family: 'Indiana';
+}
+.title{
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgb(0, 0, 0);
+    margin-bottom: rem;
+}
+.updates{
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding: 10px;
+    color: rgb(0, 0, 0);
+    margin-top: 4rem;
+    width: 20em;
+}
+
+.click{
+    cursor: pointer;
+    margin-top: 14em;
+    background-color: rgba(0, 102, 255, 0.164);
+    border-radius: 5px;
+    width: 12em;
+    height: 4.5em;
+}
+button{
+    border: black 2px solid;
+    background-color: white;
+    font-size: 2em;
+    border-radius: 5px;
+    box-shadow: #888888 3px 3px 3px ;
+    cursor: pointer;
+    padding: 0.3em 1em;
+    font-family: "Indiana";
+    font-weight: 600;
+}
+button:hover{
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
+.data{
+    width: 70%;
+    height: 100%;
+}
+.scene{
+    margin: auto;
+    margin-left:1em;
+}
+
+.container2{
+    background-size: cover;
+    height: 40em;
+    width: 63em;
+    padding-left: 3.5rem;
+    box-sizing: border-box;
+    display: flex;
+    direction: row;
+    padding-block: 1rem;
+    font-family: 'Indiana';
+    background-image: url('scene2.svg');
+}
+.cameraarea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+.cam{
+    width: 30em;
+    height: 23em;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    object-fit: cover;
+    border: 3px solid #000;
+    border-radius: 8px;
+    margin-right: 1em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    -webkit-appearance: none;
+    appearance: none;
+    background: #000;
+}
+.slot{
+    margin-left: 1em;
+    padding-top: 20em;
+    padding-inline: 2em;
+    width: 15%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.picon{
+    width: 18em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.photo-container {
+    width: 80%;
+    height: 20em;
+    margin-top: 7em;
+    display: flex;
+    gap: 0.1em ;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.photo-container img{
+    border-radius: 8px;
+    object-fit: cover;
+}
+.coincontainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20em;
+}
+
+.coincontainer .coinimg {
+    touch-action: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: transform 0.2s ease;
+}
+
+.coincontainer .coinimg:active {
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .coincontainer .coinimg {
+        min-width: 75px;
+        min-height: 75px;
+        padding: 10px;
+    }
+    
+    .slot {
+        min-width: 100px;
+        min-height: 100px;
+        padding: 15px;
+    }
+}
+
+.camera-container {
+    position: relative;
+    display: inline-block;
+}
+
+.countdown-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30.5em;
+    height: 100%;
+    display: none;
+    justify-content: center; 
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    z-index: 10;
+}
+
+.countdown-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+    animation: countdownPulse 1s ease-in-out;
+    text-align: center;
+    line-height: 1.2;
+}
+
+@keyframes countdownPulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.container3{
+    background: url('scene3.svg');
+    background-size: cover;
+    height: 48em;
+    width: 75em;
+    padding-left: 1.4rem;
+    box-sizing: border-box;
+    display: flex;
+    direction: row;
+    padding-top: 1rem;
+    font-family: 'Indiana';
+}
+.photostrip{
+    display: flex;
+    margin-top: 0.7em;
+    margin-left: 1.5em;
+    height: 45em;
+    width: 15.5em;
+}
+.customization-options{
+    width:45em;
+    height: 38.4em;
+    margin-left: 0.2em;
+    padding: 20px;
+    padding-left: 2.7rem;
+    padding-top:5.7em ;
+    box-sizing: border-box;
+}
+.filter-button {
+    border: black 2px solid;
+    background-color: white;
+    font-size: 1.5em;
+    border-radius: 5px;
+    box-shadow: #747373 3px 3px 3px ;
+    cursor: pointer;
+    padding: 0.3em 1em;
+    font-family: "Indiana";
+    font-weight: 600;
+    margin: 0.1em;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: rgb(70, 70, 70);
+    color: white;
+}
+
+.filter-button:active {
+    transform: translateY(1px);
+    box-shadow: #747373 2px 2px 2px;
+}
+
+.filter-ops, .frame-ops, .other-ops, .main {
+    margin-bottom: 1.5rem;
+}
+
+.filter-ops span, .frame-ops span, .other-ops span {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+    color: #000;
+    font-size: 2em;
+}

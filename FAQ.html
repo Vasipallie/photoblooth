@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoBooth FAQ - Privacy & Local Processing</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+        @font-face {
+            font-family: 'Indiana';
+            src: url('cyparius.ttf');
+        }
+        @font-face {
+            font-family: 'geoman';
+            src: url('Geo.ttf');
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Indiana', 'geoman', sans-serif;
+            line-height: 1.4;
+            color: #000;
+            background: #f5f5dc;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border: 3px solid #000;
+            box-shadow: #888888 5px 5px 5px;
+            overflow: hidden;
+        }
+
+        .header {
+            background: white;
+            color: black;
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #000;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+            font-family: 'Indiana';
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Indiana';
+        }
+
+        .content {
+            padding: 2rem;
+        }
+
+        .faq-item {
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #000;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .question {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #000;
+            margin-bottom: 0.8rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Indiana';
+            padding: 10px;
+            background: rgba(0, 102, 255, 0.164);
+            border: 2px solid #000;
+            border-radius: 5px;
+        }
+
+        .question::after {
+            content: '+';
+            font-size: 2rem;
+            font-weight: 900;
+            color: #000;
+        }
+
+        .question.active::after {
+            content: '-';
+        }
+
+        .question:hover {
+            background-color: rgb(70, 70, 70);
+            color: white;
+        }
+
+        .answer {
+            color: #000;
+            line-height: 1.4;
+            display: none;
+            padding: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Indiana';
+        }
+
+        .answer.show {
+            display: block;
+        }
+
+        .highlight {
+            background: rgba(0, 102, 255, 0.164);
+            padding: 15px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            margin: 1rem 0;
+            box-shadow: #888888 3px 3px 3px;
+        }
+
+        .privacy-badge {
+            display: inline-block;
+            background: white;
+            color: black;
+            padding: 10px 20px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            font-family: 'Indiana';
+            box-shadow: #888888 3px 3px 3px;
+        }
+
+        .back-button {
+            border: black 2px solid;
+            background-color: white;
+            font-size: 1.5em;
+            border-radius: 5px;
+            box-shadow: #888888 3px 3px 3px;
+            cursor: pointer;
+            padding: 0.3em 1em;
+            font-family: "Indiana";
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .back-button:hover {
+            background-color: rgb(70, 70, 70);
+            color: white;
+        }
+
+        ul, ol {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        li {
+            margin: 5px 0;
+        }
+
+        strong {
+            font-weight: 900;
+        }
+
+        .faq-list {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .content {
+                padding: 1.5rem;
+            }
+            
+            .question {
+                font-size: 1.5rem;
+            }
+            
+            .answer {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="back-button" onclick="history.back()">← Back to PhotoBooth</button>
+    
+    <div class="container">
+        <div class="header">
+            <h1>PhotoBooth FAQ</h1>
+            <p>Your privacy matters - Everything happens locally!</p>
+        </div>
+        
+        <div class="content">
+            
+            <div class="faq-item">
+                <div class="question">Is my data safe when using PhotoBooth?</div>
+                <div class="answer">
+                    <div class="highlight">
+                        <strong>Yes.</strong> Your photos and personal data never leave your device. Everything is processed locally in your browser - no servers, no cloud storage, no data transmission.
+                    </div>
+                    <p>PhotoBooth operates entirely on your device using your browser's built-in capabilities. Your photos are captured, edited, and downloaded without ever being sent anywhere else.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">What does "local processing" mean?</div>
+                <div class="answer">
+                    <p>Local processing means all the magic happens right on your device:</p>
+                    <ul class="faq-list">
+                        <li>📷 Camera access stays within your browser</li>
+                        <li>🎨 Photo filters and frames are applied instantly on your device</li>
+                        <li>💾 Downloads are created directly by your browser</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Do you store my photos anywhere?</div>
+                <div class="answer">
+                    <p><strong>No.</strong> We don't have access to your photos at any point. They exist only:</p>
+                    <ul class="faq-list">
+                        <li>Temporarily in your browser's memory while you're using the app</li>
+                        <li>In your device's downloads folder when you save them</li>
+                    </ul>
+                    <p>Once you close the browser tab, any temporary data is automatically cleared.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Can PhotoBooth work offline?</div>
+                <div class="answer">
+                    <p>Yes! Once the page loads initially, PhotoBooth can work completely offline. The only internet requirement is for the initial page load. All photo processing, filtering, and downloading works without an internet connection.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">What permissions does PhotoBooth need?</div>
+                <div class="answer">
+                    <p>PhotoBooth only requests camera permission to capture your photos. This permission:</p>
+                    <ul class="faq-list">
+                        <li>Is handled entirely by your browser</li>
+                        <li>Allows direct camera access without intermediaries</li>
+                        <li>Can be revoked at any time through browser settings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">How secure is the app?</div>
+                <div class="answer">
+                    <div class="highlight">
+                        <strong>Local Security:</strong> Since everything happens locally, there are no security vulnerabilities related to data transmission or server breaches.
+                    </div>
+                    <p>Your photos do not travel across networks, which reduces security risks. The main security consideration is your device's own security.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Why choose local processing over cloud-based apps?</div>
+                <div class="answer">
+                    <p><strong>Privacy Benefits:</strong></p>
+                    <ul class="faq-list">
+                        <li>🔐 Complete control over your data</li>
+                        <li>⚡ Faster processing (no upload/download delays)</li>
+                        <li>💰 No subscription fees or data charges</li>
+                        <li>🌐 Works anywhere, even with poor internet</li>
+                        <li>🛡️ No risk of data breaches or misuse</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">Can I trust that no data is being collected?</div>
+                <div class="answer">
+                    <p>Yes. This is verifiable because:</p>
+                    <ul class="faq-list">
+                        <li>You can check your browser's network activity - you'll see no photo uploads</li>
+                        <li>The app works with your internet disconnected (try it!)</li>
+                        <li>All processing code runs visibly in your browser</li>
+                        <li>No analytics, tracking, or data collection scripts are used</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="question">What happens when I download my photostrip?</div>
+                <div class="answer">
+                    <p>When you click download, your browser creates the image file directly on your device. The process:</p>
+                    <ol class="faq-list">
+                        <li>Your photos are combined into a photostrip in your browser's memory</li>
+                        <li>The browser converts this to a high-quality PNG file</li>
+                        <li>The file is saved directly to your downloads folder</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isActive = question.classList.contains('active');
+                
+                document.querySelectorAll('.question').forEach(q => {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('show');
+                });
+                
+                if (!isActive) {
+                    question.classList.add('active');
+                    answer.classList.add('show');
+                }
+            });
+        });
+        document.querySelector('.question').click();
+    </script>
+</body>
+</html>

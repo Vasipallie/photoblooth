@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>photoblooth</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="container" id="container1">
+        <div class="data">
+            <span class="title">PhotoBlooth</span>
+            <div class="updates">✨Welcome to our lovely photobooth✨<br>
+            <br> A redesigned and customisable photo experience, Feel free to look around and enjoy the experience with your friends and family :D </div>
+            <button class="filter-button" onclick="location.href='faq.html'">Frequently Asked Questions</button>
+            <div class="click" onclick="location.href='https:instagram.com/vasipalli.e'"></div>
+        </div>
+        <div class="scene">
+            <button class="enter" onclick="enterStudio()" id="enterStudio">Enter Studio</button>
+        </div>
+    </div>
+
+    
+    <div id="container2" class="container2">
+        <div class="cameraarea">
+            <div class="camera-container">
+                <video id="camera" class="cam" autoplay muted playsinline webkit-playsinline></video>
+                <div id="countdown-overlay" class="countdown-overlay">
+                    <div id="countdown-number" class="countdown-number">3</div>
+                </div>
+            </div>
+            <button id="custom" onclick="customisePhotostrip()">Customise Photostrip</button>
+        </div>
+        <div class="slot">           
+        </div>
+        <div class="picon">
+            <div class="photo-container"> 
+                <img src="pics.png" alt="photo1" class="photo" id="photo1" width="65%" height="30%">
+                <img src="pics.png" alt="photo2" class="photo" id="photo2" width="65%" height="30%">
+                <img src="pics.png" alt="photo3" class="photo" id="photo3" width="65%" height="30%">
+                <img src="pics.png" alt="photo4" class="photo" id="photo4" width="65%" height="30%">
+            </div>
+            <div class="coincontainer">
+                <img src="coin.png" alt="coin" class="coinimg" width="75em">
+        </div>
+    </div>
+    </div>
+    <div id="container3" class="container3">
+        <div class="photostrip"></div>
+        <div class="customization-options">
+            <br><br>
+            <div class="filter-ops">
+            <span>Filters:</span>
+                <button class="filter-button" onclick="applyFilter('none')">None</button>
+                <button class="filter-button" onclick="applyFilter('grayscale(100%)')">Grayscale</button>
+                <button class="filter-button" onclick="applyFilter('sepia(100%)')">Sepia</button>
+                <button class="filter-button" onclick="applyFilter('invert(100%)')">Invert</button>
+                <button class="filter-button" onclick="applyFilter('hue-rotate(90deg)')">Color Shift</button>
+                <button class="filter-button" onclick="applyFilter('saturate(200%)')">Vivid</button>   
+            </div>
+            <br><br>
+            <div class="frame-ops">
+                <span>Frames:</span>
+                <button class="filter-button" onclick="applyFrame('none')">None</button>
+                <button class="filter-button" onclick="applyFrame('floral.png')">Floral</button>
+                <button class="filter-button" onclick="applyFrame('retro.png')">Retro</button>
+                <button class="filter-button" onclick="applyFrame('midnight.png')">Midnight</button>
+                <!-- <button class="filter-button" onclick="applyFrame('forest.png')">Forest</button> -->
+            </div>
+            <br><br>
+            <div class="other-ops">
+                <span>Other:</span>
+                <button class="filter-button" onclick="addText()">Add Text</button>
+                <button class="filter-button" onclick="addDateTime()">Add Date and Time</button>
+            </div><br><br><br>
+            <div class="main">
+                <button class="filter-button" onclick="download()">Download Photostrip</button>
+                <button class="filter-button" onclick="share()">Share Photostrip</button>
+                <button class="filter-button" onclick="restart()">Restart</button>
+
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>  
+</body>  
+</html> 
