@@ -227,7 +227,7 @@ button:hover{
 }
 
 .container3{
-    background: url('scene3.svg');
+    background: url('https://raw.githubusercontent.com/Vasipallie/photoblooth/refs/heads/main/Scene3.svg');
     background-size: cover;
     height: 48em;
     width: 75em;
@@ -289,4 +289,5 @@ button:hover{
     color: #000;
     font-size: 2em;
 }
+
 
