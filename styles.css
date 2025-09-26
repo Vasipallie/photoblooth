@@ -91,7 +91,7 @@ button:hover{
     direction: row;
     padding-block: 1rem;
     font-family: 'Indiana';
-    background-image: url('scene2.svg');
+    background-image: url('https://raw.githubusercontent.com/Vasipallie/photoblooth/refs/heads/main/Scene2.svg');
 }
 .cameraarea{
     display: flex;
@@ -289,3 +289,4 @@ button:hover{
     color: #000;
     font-size: 2em;
 }
+
